@@ -1,0 +1,33 @@
+#EXTM3U
+# Lista de DEMOSTRACIÓN de Caudal.
+#
+# Para qué es: para las capturas de la ficha de Google Play y para que quien revise la app en la
+# tienda pueda probarla sin tener una lista propia. Caudal es un reproductor y no trae contenido:
+# esta lista existe justamente para poder enseñar la app sin usar canales ajenos.
+#
+# Los nombres son genéricos a propósito (nada de cadenas reales, ni sus logos ni sus marcas) y el
+# vídeo es el flujo de pruebas público de Apple, pensado para eso.
+#EXTINF:-1 tvg-id="demo.1" group-title="Noticias",Canal Demo 1
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="demo.2" group-title="Noticias",Canal Demo 2
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="demo.3" group-title="Deportes",Deportes Demo
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="demo.4" group-title="Deportes",Deportes Demo 2
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="demo.5" group-title="Cine",Cine Demo
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="demo.6" group-title="Cine",Cine Demo 2
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="demo.7" group-title="Documentales",Documentales Demo
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="demo.8" group-title="Documentales",Naturaleza Demo
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="demo.9" group-title="Infantil",Infantil Demo
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="demo.10" group-title="Música",Música Demo
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="demo.11" group-title="Música",Música Demo 2
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+#EXTINF:-1 tvg-id="demo.12" group-title="Local",Local Demo
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
