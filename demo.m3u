@@ -1,33 +1,16 @@
 #EXTM3U
-# Lista de DEMOSTRACIÓN de Caudal.
-#
-# Para qué es: para las capturas de la ficha de Google Play y para que quien revise la app en la
-# tienda pueda probarla sin tener una lista propia. Caudal es un reproductor y no trae contenido:
-# esta lista existe justamente para poder enseñar la app sin usar canales ajenos.
-#
-# Los nombres son genéricos a propósito (nada de cadenas reales, ni sus logos ni sus marcas) y el
-# vídeo es el flujo de pruebas público de Apple, pensado para eso.
-#EXTINF:-1 tvg-id="demo.1" group-title="Noticias",Canal Demo 1
-https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
-#EXTINF:-1 tvg-id="demo.2" group-title="Noticias",Canal Demo 2
-https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
-#EXTINF:-1 tvg-id="demo.3" group-title="Deportes",Deportes Demo
-https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
-#EXTINF:-1 tvg-id="demo.4" group-title="Deportes",Deportes Demo 2
-https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
-#EXTINF:-1 tvg-id="demo.5" group-title="Cine",Cine Demo
-https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
-#EXTINF:-1 tvg-id="demo.6" group-title="Cine",Cine Demo 2
-https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
-#EXTINF:-1 tvg-id="demo.7" group-title="Documentales",Documentales Demo
-https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
-#EXTINF:-1 tvg-id="demo.8" group-title="Documentales",Naturaleza Demo
-https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
-#EXTINF:-1 tvg-id="demo.9" group-title="Infantil",Infantil Demo
-https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
-#EXTINF:-1 tvg-id="demo.10" group-title="Música",Música Demo
-https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
-#EXTINF:-1 tvg-id="demo.11" group-title="Música",Música Demo 2
-https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
-#EXTINF:-1 tvg-id="demo.12" group-title="Local",Local Demo
-https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
+# Lista de DEMOSTRACIÓN de Caudal (solo obra abierta, licencia CC-BY de Blender Foundation).
+# Existe para probar la app sin aportar lista propia: capturas de la ficha, testers y revisores.
+# Atribución completa: https://javihg.github.io/caudal-legal/demo/
+#EXTINF:-1 tvg-id="demo.cine" tvg-logo="https://javihg.github.io/caudal-legal/demo/logos/cine-demo.png" group-title="Cine",Cine Demo
+https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+#EXTINF:-1 tvg-id="demo.scifi" tvg-logo="https://javihg.github.io/caudal-legal/demo/logos/scifi-demo.png" group-title="Cine",Sci-Fi Demo
+https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8
+#EXTINF:-1 tvg-id="demo.senal" tvg-logo="https://javihg.github.io/caudal-legal/demo/logos/senal-tecnica.png" group-title="Técnico",Señal Técnica
+https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8
+#EXTINF:-1 tvg-id="demo.aventura" tvg-logo="https://javihg.github.io/caudal-legal/demo/logos/aventura-demo.png" group-title="Cine",Aventura Demo
+https://archive.org/download/Sintel/sintel-2048-stereo_512kb.mp4
+#EXTINF:-1 tvg-id="demo.bbb" tvg-logo="https://javihg.github.io/caudal-legal/demo/posters/big-buck-bunny.png" group-title="Películas",Big Buck Bunny
+https://archive.org/download/BigBuckBunny_124/big_buck_bunny_720p_surround.mp4
+#EXTINF:-1 tvg-id="demo.ed" tvg-logo="https://javihg.github.io/caudal-legal/demo/posters/elephants-dream.png" group-title="Películas",Elephants Dream
+https://archive.org/download/ElephantsDream/ed_hd.mp4
