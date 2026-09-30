@@ -1,0 +1,16 @@
+#EXTM3U
+# Lista de DEMOSTRACIÓN de Caudal (solo obra abierta, licencia CC-BY de Blender Foundation).
+# Existe para probar la app sin aportar lista propia: capturas de la ficha, testers y revisores.
+# Atribución completa: https://javihg.github.io/caudal-legal/demo/
+#EXTINF:-1 tvg-id="demo.cine" tvg-logo="https://javihg.github.io/caudal-legal/demo/logos/cine-demo.png" group-title="Cine",Cine Demo
+https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+#EXTINF:-1 tvg-id="demo.scifi" tvg-logo="https://javihg.github.io/caudal-legal/demo/logos/scifi-demo.png" group-title="Cine",Sci-Fi Demo
+https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8
+#EXTINF:-1 tvg-id="demo.senal" tvg-logo="https://javihg.github.io/caudal-legal/demo/logos/senal-tecnica.png" group-title="Técnico",Señal Técnica
+https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8
+#EXTINF:-1 tvg-id="demo.aventura" tvg-logo="https://javihg.github.io/caudal-legal/demo/logos/aventura-demo.png" group-title="Cine",Aventura Demo
+https://archive.org/download/Sintel/sintel-2048-stereo_512kb.mp4
+#EXTINF:-1 tvg-id="demo.bbb" tvg-logo="https://javihg.github.io/caudal-legal/demo/posters/big-buck-bunny.png" group-title="Películas",Big Buck Bunny
+https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4
+#EXTINF:-1 tvg-id="demo.ed" tvg-logo="https://javihg.github.io/caudal-legal/demo/posters/elephants-dream.png" group-title="Películas",Elephants Dream
+https://archive.org/download/ElephantsDream/ed_hd.mp4

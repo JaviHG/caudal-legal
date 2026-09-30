@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Política de privacidad — Caudal</title>
+<meta name="description" content="Política de privacidad de Caudal: reproductor multimedia neutro. Tus listas y credenciales se quedan cifradas en tu dispositivo. Sin anuncios ni rastreadores.">
+<style>
+  :root{
+    --bg:#f4f9fc; --card:#ffffff; --ink:#0d1a24; --muted:#54697c;
+    --brand:#0ea5c4; --brand2:#3b82f6; --accent:#22d3ee; --line:#dceaf1;
+    --ok:#0f9d77; --warn:#c9700a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#081521; --card:#0f2130; --ink:#e8f3fb; --muted:#93aec2; --line:#1d3446; }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.65}
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px 80px}
+  header.hero{background:linear-gradient(135deg,#0a1826,#0b2b3f);color:#fff;padding:38px 0 30px;
+       border-bottom:3px solid var(--brand)}
+  .hero .wrap{display:flex;align-items:center;gap:18px;padding-bottom:0}
+  .logo{flex:0 0 auto;width:60px;height:60px}
+  .hero h1{margin:0;font-size:1.7rem;letter-spacing:.2px}
+  .hero p{margin:4px 0 0;color:#a9c6da;font-size:.95rem}
+  .langbar{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);
+       padding:10px 0;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+  .langbar .wrap{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:0;align-items:center}
+  .langbar .lbl{font-size:.82rem;color:var(--muted);margin-right:4px}
+  .lang{border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;
+       padding:6px 12px;border-radius:999px;font-size:.85rem;transition:.15s}
+  .lang:hover{border-color:var(--brand)}
+  .lang[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:600}
+  .updated{color:var(--muted);font-size:.9rem;margin:22px 0 6px}
+  .summary{background:linear-gradient(135deg,rgba(34,211,238,.12),rgba(59,130,246,.10));
+       border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;
+       padding:16px 18px;margin:14px 0 8px}
+  .summary b{color:var(--brand)}
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+       padding:18px 20px;margin:16px 0;box-shadow:0 1px 3px rgba(13,26,36,.04)}
+  section.card h2{margin:.1em 0 .5em;font-size:1.12rem;color:var(--ink)}
+  section.card h2 .n{color:var(--brand);font-weight:700;margin-right:.45em}
+  ul{margin:.4em 0;padding-left:1.2em}
+  li{margin:.32em 0}
+  .pill{display:inline-block;font-size:.72rem;font-weight:600;padding:2px 9px;border-radius:999px;
+       background:rgba(15,157,119,.14);color:var(--ok);margin-left:6px;vertical-align:middle}
+  .pill.warn{background:rgba(201,112,10,.14);color:var(--warn)}
+  a{color:var(--brand)}
+  code{background:rgba(34,211,238,.12);padding:1px 6px;border-radius:5px;font-size:.92em}
+  footer{color:var(--muted);font-size:.85rem;text-align:center;margin-top:30px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs><linearGradient id="w" x1="20" y1="20" x2="80" y2="82" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#7de3f0"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs>
+      <path d="M50 16 C74 16 84 34 84 54 C84 74 70 86 50 86 C30 86 16 74 16 54 C16 40 26 30 40 30 C40 44 50 50 62 50 C56 40 50 30 50 16 Z" fill="url(#w)"/>
+      <path d="M30 52 C40 46 52 58 70 50" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity=".85"/>
+    </svg>
+    <div>
+      <h1 id="t-title">Política de privacidad de Caudal</h1>
+      <p id="t-tag">Un reproductor. Lo mínimo sale de tu dispositivo.</p>
+    </div>
+  </div>
+</header>
+
+<nav class="langbar" aria-label="Idioma / Language">
+  <div class="wrap"><span class="lbl" id="t-langlabel">Idioma:</span><span id="langbtns"></span></div>
+</nav>
+
+<main class="wrap">
+  <p class="updated" id="t-updated"></p>
+  <div class="summary" id="t-summary"></div>
+  <div id="content"></div>
+  <footer id="t-footer"></footer>
+</main>
+
+<script>
+const EMAIL = "contact.us.apps.world@gmail.com";
+const mail = '<a href="mailto:'+EMAIL+'">'+EMAIL+'</a>';
+const OK = (s)=> '<span class="pill">'+s+'</span>';
+const WARN = (s)=> '<span class="pill warn">'+s+'</span>';
+
+const T = {
+es:{ name:"Español", dir:"ltr",
+  title:"Política de privacidad de Caudal",
+  tag:"Un reproductor. Lo mínimo sale de tu dispositivo.",
+  updated:"Última actualización: 30 de septiembre de 2026",
+  langlabel:"Idioma:",
+  summary:"<b>En resumen:</b> Caudal es un reproductor multimedia. Tú aportas tus listas y Caudal las reproduce. Tus listas y credenciales se guardan <b>cifradas en tu dispositivo</b>. Salen <b>métricas de uso anónimas</b> y un <b>diagnóstico técnico</b> de los fallos (los dos vienen activados y puedes apagarlos en Ajustes); la sincronización, solo si TÚ la activas. <b>Sin anuncios y sin rastreadores de terceros</b>, y sin venta de datos.",
+  sections:[
+    {h:"Quiénes somos", html:"Caudal es un reproductor multimedia para Android y Android TV, desarrollado de forma independiente. No aloja ni proporciona canales o contenidos: tú aportas tus fuentes. Para cualquier consulta sobre privacidad escribe a "+mail+"."},
+    {h:"Lo que se queda en tu dispositivo", html:"Tus listas (M3U/Xtream), credenciales, favoritos, historial de «continuar viendo», perfiles y ajustes se guardan <b>cifrados en tu propio dispositivo</b>. No se envían a Caudal salvo en los casos opcionales de abajo. "+OK("local")+""},
+    {h:"Métricas de uso anónimas (ACTIVADAS, puedes apagarlas)", html:"Para saber si la app se usa y qué merece la pena mejorar, se cuentan de forma anónima cosas como cuántas veces se abre, si has llegado a conectar una lista, si has reproducido algo y qué funciones usas. Se usa un <b>identificador aleatorio de instalación</b> (no el de publicidad), las cantidades viajan <b>por tramos</b> y no exactas, y hay una <b>lista cerrada</b> de lo que se puede enviar: no caben nombres de canal, URLs ni credenciales. No se guarda tu IP ni evento alguno por separado, solo contadores agregados. Apágalo cuando quieras en Ajustes. "+OK("puedes apagarlo")+""},
+    {h:"Diagnóstico de reproducción (ACTIVADO, puedes apagarlo)", html:"Viene activado para ayudarnos a corregir fallos, y la app te lo avisa al empezar. Se envían señales técnicas: un <b>identificador de instalación anónimo</b>, el modelo y la versión de tu dispositivo, la versión de la app, eventos de reproducción (nombre de canal saneado, estado, cortes y errores) y, si la app se cierra de golpe, el informe técnico del fallo. <b>Nunca</b> se envían tus credenciales ni las URLs de tus listas. Retención: 48 horas. Apágalo cuando quieras en Ajustes. "+OK("puedes apagarlo")+""},
+    {h:"Sincronización y «enviar a la TV» (opcional, Premium)", html:"Si vinculas tus dispositivos con un código, tus datos viajan <b>cifrados de extremo a extremo</b>: nuestro servidor solo guarda texto cifrado que <b>no puede leer</b>, identificado por ese código. Sirve para sincronizar favoritos e historial y enviar un canal a tu tele. Puedes desvincular cuando quieras. "+WARN("opcional")+""},
+    {h:"Suscripción Premium", html:"El pago y la comprobación de tu compra los hace <b>Google Play</b> directamente en tu dispositivo: Caudal no envía el comprobante a ningún servidor propio y <b>no recibe los datos de tu tarjeta</b>. Puedes cancelar la suscripción cuando quieras en Google Play › Suscripciones."},
+    {h:"Lo que NO hacemos", html:"<ul><li>No mostramos anuncios de terceros ni incluimos SDK de publicidad.</li><li>No usamos analítica ni rastreadores de terceros.</li><li>No vendemos tus datos ni creamos perfiles publicitarios.</li><li>No accedemos a tus contactos, ubicación, fotos ni micrófono.</li></ul>"},
+    {h:"Permisos", html:"Caudal usa <b>Internet</b> para reproducir tus fuentes y, en el canal de instalación directa (fuera de Google Play), <b>instalar sus propias actualizaciones</b>. No pide permisos sensibles."},
+    {h:"Menores", html:"Caudal no está dirigido a menores de edad."},
+    {h:"Tus derechos y el borrado de datos (RGPD)", html:"Al desinstalar la app se eliminan todos los datos locales. Para los datos del servidor: desvincular la sincronización restablece tu grupo cifrado; el diagnóstico caduca solo a las 48 h; y puedes escribirnos para eliminar cualquier dato asociado a tu identificador de instalación o a tu compra: "+mail+"."},
+    {h:"Seguridad", html:"El almacenamiento local va cifrado. Las conexiones a nuestros servidores usan HTTPS. La app comprueba su propia firma para detectar copias manipuladas."},
+    {h:"Cambios en esta política", html:"Si modificamos esta política, actualizaremos esta página y su fecha."},
+    {h:"Contacto", html:"Para cualquier duda sobre privacidad: "+mail+"."}
+  ],
+  footer:"Caudal — Reproductor multimedia neutro. Esta página es informativa y no constituye asesoramiento legal. Caudal no proporciona, aloja ni distribuye canales ni contenidos."
+},
+
+en:{ name:"English", dir:"ltr",
+  title:"Caudal Privacy Policy",
+  tag:"Just a player. The minimum leaves your device.",
+  updated:"Last updated: 30 September 2026",
+  langlabel:"Language:",
+  summary:"<b>In short:</b> Caudal is a media player. You bring your lists and Caudal plays them. Your lists and credentials are stored <b>encrypted on your device</b>. <b>Anonymous usage metrics</b> and <b>technical diagnostics</b> about failures are sent (both are on by default and you can switch them off in Settings); sync only if YOU turn it on. <b>No ads, no third-party trackers</b>, no data selling.",
+  sections:[
+    {h:"Who we are", html:"Caudal is an independently developed media player for Android and Android TV. It does not host or provide any channels or content: you bring your own sources. For any privacy question, write to "+mail+"."},
+    {h:"What stays on your device", html:"Your lists (M3U/Xtream), credentials, favourites, \"continue watching\" history, profiles and settings are stored <b>encrypted on your own device</b>. They are not sent to Caudal except in the optional cases below. "+OK("local")+""},
+    {h:"Anonymous usage metrics (ON, you can switch them off)", html:"To know whether the app is actually used and what is worth improving, we anonymously count things like how often it is opened, whether you managed to connect a playlist, whether you played anything and which features you use. It uses a <b>random install identifier</b> (not the advertising ID), amounts travel <b>in bands</b> rather than exact values, and there is a <b>closed list</b> of what can be sent: channel names, URLs and credentials do not fit in it. Your IP is not stored and neither is any individual event, only aggregate counters. Switch it off anytime in Settings. "+OK("you can switch it off")+""},
+    {h:"Playback diagnostics (ON, you can switch it off)", html:"It is on by default to help us fix problems, and the app tells you so when you start. It sends technical signals: an <b>anonymous install identifier</b>, your device model and version, the app version, playback events (sanitised channel name, state, drops and errors) and, if the app crashes, the technical crash report. Your credentials and list URLs are <b>never</b> sent. Retention: 48 hours. Switch it off at any time in Settings. "+OK("you can switch it off")+""},
+    {h:"Sync and \"send to TV\" (optional, Premium)", html:"If you link your devices with a code, your data travels <b>end-to-end encrypted</b>: our server only stores ciphertext it <b>cannot read</b>, identified by that code. It syncs favourites and history and sends a channel to your TV. You can unlink anytime. "+WARN("optional")+""},
+    {h:"Premium subscription", html:"Payment and purchase verification are handled by <b>Google Play</b> directly on your device: Caudal does not send your receipt to any server of its own and <b>never receives your card details</b>. You can cancel the subscription at any time in Google Play › Subscriptions."},
+    {h:"What we do NOT do", html:"<ul><li>No third-party ads and no ad SDKs.</li><li>No third-party analytics or trackers.</li><li>We don't sell your data or build advertising profiles.</li><li>We don't access your contacts, location, photos or microphone.</li></ul>"},
+    {h:"Permissions", html:"Caudal uses the <b>Internet</b> to play your sources and, on the direct-install channel (outside Google Play), to <b>install its own updates</b>. It requests no sensitive permissions."},
+    {h:"Children", html:"Caudal is not directed at children."},
+    {h:"Your rights and data deletion (GDPR)", html:"Uninstalling the app removes all local data. For server data: unlinking sync resets your encrypted group; diagnostics expire on their own after 48h; and you can write to us to delete any data tied to your install identifier or your purchase: "+mail+"."},
+    {h:"Security", html:"Local storage is encrypted. Connections to our servers use HTTPS. The app checks its own signature to detect tampered copies."},
+    {h:"Changes to this policy", html:"If we change this policy, we will update this page and its date."},
+    {h:"Contact", html:"For any privacy question: "+mail+"."}
+  ],
+  footer:"Caudal — Neutral media player. This page is informational and not legal advice. Caudal does not provide, host or distribute any channels or content."
+},
+
+fr:{ name:"Français", dir:"ltr",
+  title:"Politique de confidentialité de Caudal",
+  tag:"Juste un lecteur. Le minimum quitte votre appareil.",
+  updated:"Dernière mise à jour : 30 septembre 2026",
+  langlabel:"Langue :",
+  summary:"<b>En bref :</b> Caudal est un lecteur multimédia. Vous fournissez vos listes et Caudal les lit. Vos listes et identifiants sont stockés <b>chiffrés sur votre appareil</b>. Des <b>statistiques d'usage anonymes</b> et un <b>diagnostic technique</b> des pannes sont envoyés (activés par défaut, désactivables dans les réglages) ; la synchronisation, seulement si VOUS l'activez. <b>Aucune publicité, aucun traceur tiers</b>, aucune vente de données.",
+  sections:[
+    {h:"Qui sommes-nous", html:"Caudal est un lecteur multimédia indépendant pour Android et Android TV. Il n'héberge ni ne fournit aucune chaîne ou contenu : vous apportez vos propres sources. Pour toute question sur la confidentialité, écrivez à "+mail+"."},
+    {h:"Ce qui reste sur votre appareil", html:"Vos listes (M3U/Xtream), identifiants, favoris, historique « reprendre la lecture », profils et réglages sont stockés <b>chiffrés sur votre propre appareil</b>. Ils ne sont pas envoyés à Caudal sauf dans les cas facultatifs ci-dessous. "+OK("local")+""},
+    {h:"Statistiques d'usage anonymes (ACTIVÉES, désactivables)", html:"Pour savoir si l'application est réellement utilisée et ce qu'il vaut la peine d'améliorer, on compte de façon anonyme le nombre d'ouvertures, si vous avez réussi à connecter une liste, si vous avez lu quelque chose et quelles fonctions vous utilisez. On utilise un <b>identifiant d'installation aléatoire</b> (pas l'identifiant publicitaire), les quantités circulent <b>par tranches</b> et non exactes, et une <b>liste fermée</b> définit ce qui peut être envoyé : ni noms de chaîne, ni URL, ni identifiants. Votre IP n'est pas conservée, aucun événement individuel non plus, seulement des compteurs agrégés. Désactivable à tout moment dans les réglages. "+OK("désactivable")+""},
+    {h:"Diagnostic de lecture (ACTIVÉ, désactivable)", html:"Il est activé par défaut pour nous aider à corriger les problèmes, et l'appli vous le signale au démarrage. Des signaux techniques sont envoyés : un <b>identifiant d'installation anonyme</b>, le modèle et la version de votre appareil, la version de l'appli, des événements de lecture (nom de chaîne assaini, état, coupures et erreurs) et, si l'appli se ferme brutalement, le rapport technique de la panne. Vos identifiants et les URL de vos listes ne sont <b>jamais</b> envoyés. Conservation : 48 heures. Désactivez-le quand vous voulez dans les réglages. "+OK("désactivable")+""},
+    {h:"Synchronisation et « envoyer vers la TV » (facultatif, Premium)", html:"Si vous liez vos appareils avec un code, vos données transitent <b>chiffrées de bout en bout</b> : notre serveur ne stocke qu'un texte chiffré qu'il <b>ne peut pas lire</b>, identifié par ce code. Cela synchronise favoris et historique et envoie une chaîne vers votre télé. Vous pouvez dissocier à tout moment. "+WARN("facultatif")+""},
+    {h:"Abonnement Premium", html:"Le paiement et la vérification de votre achat sont assurés par <b>Google Play</b> directement sur votre appareil : Caudal n'envoie le reçu à aucun serveur à lui et <b>ne reçoit pas vos données bancaires</b>. Vous pouvez résilier l'abonnement à tout moment dans Google Play › Abonnements."},
+    {h:"Ce que nous ne faisons PAS", html:"<ul><li>Aucune publicité tierce ni SDK publicitaire.</li><li>Aucune analytique ni traceur tiers.</li><li>Nous ne vendons pas vos données et ne créons pas de profils publicitaires.</li><li>Nous n'accédons ni à vos contacts, ni à votre position, ni à vos photos, ni au micro.</li></ul>"},
+    {h:"Autorisations", html:"Caudal utilise <b>Internet</b> pour lire vos sources et, sur le canal d'installation directe (hors Google Play), pour <b>installer ses propres mises à jour</b>. Il ne demande aucune autorisation sensible."},
+    {h:"Mineurs", html:"Caudal n'est pas destiné aux mineurs."},
+    {h:"Vos droits et l'effacement (RGPD)", html:"Désinstaller l'appli supprime toutes les données locales. Pour les données du serveur : dissocier la synchro réinitialise votre groupe chiffré ; le diagnostic expire seul après 48 h ; et vous pouvez nous écrire pour effacer toute donnée liée à votre identifiant d'installation ou à votre achat : "+mail+"."},
+    {h:"Sécurité", html:"Le stockage local est chiffré. Les connexions à nos serveurs utilisent HTTPS. L'appli vérifie sa propre signature pour détecter les copies altérées."},
+    {h:"Modifications", html:"Si nous modifions cette politique, nous mettrons à jour cette page et sa date."},
+    {h:"Contact", html:"Pour toute question sur la confidentialité : "+mail+"."}
+  ],
+  footer:"Caudal — Lecteur multimédia neutre. Cette page est informative et ne constitue pas un conseil juridique. Caudal ne fournit, n'héberge ni ne distribue aucune chaîne ou contenu."
+},
+
+pt:{ name:"Português", dir:"ltr",
+  title:"Política de privacidade da Caudal",
+  tag:"Apenas um leitor. O mínimo sai do teu dispositivo.",
+  updated:"Última atualização: 30 de setembro de 2026",
+  langlabel:"Idioma:",
+  summary:"<b>Em resumo:</b> Caudal é um leitor multimédia. Tu trazes as tuas listas e a Caudal reproduz. As tuas listas e credenciais ficam <b>cifradas no teu dispositivo</b>. Saem <b>métricas de utilização anónimas</b> e um <b>diagnóstico técnico</b> das falhas (ambos vêm ativados e podes desligá-los nas definições); a sincronização, só se TU a ativares. <b>Sem anúncios e sem rastreadores de terceiros</b>, e sem venda de dados.",
+  sections:[
+    {h:"Quem somos", html:"Caudal é um leitor multimédia independente para Android e Android TV. Não aloja nem fornece canais ou conteúdos: tu trazes as tuas fontes. Para questões de privacidade escreve para "+mail+"."},
+    {h:"O que fica no teu dispositivo", html:"As tuas listas (M3U/Xtream), credenciais, favoritos, histórico «continuar a ver», perfis e definições ficam <b>cifrados no teu próprio dispositivo</b>. Não são enviados à Caudal exceto nos casos opcionais abaixo. "+OK("local")+""},
+    {h:"Métricas de utilização anónimas (ATIVADAS, podes desligá-las)", html:"Para saber se a app é usada e o que vale a pena melhorar, contam-se de forma anónima coisas como quantas vezes é aberta, se chegaste a ligar uma lista, se reproduziste algo e que funções usas. Usa-se um <b>identificador aleatório de instalação</b> (não o de publicidade), as quantidades viajam <b>por escalões</b> e não exatas, e há uma <b>lista fechada</b> do que pode ser enviado: não cabem nomes de canal, URLs nem credenciais. Não se guarda o teu IP nem qualquer evento isolado, apenas contadores agregados. Desliga quando quiseres nas definições. "+OK("podes desligar")+""},
+    {h:"Diagnóstico de reprodução (ATIVADO, podes desligá-lo)", html:"Vem ativado para nos ajudar a corrigir falhas, e a app avisa-te disso ao começar. Enviam-se sinais técnicos: um <b>identificador de instalação anónimo</b>, o modelo e versão do teu dispositivo, a versão da app, eventos de reprodução (nome de canal saneado, estado, cortes e erros) e, se a app fechar de repente, o relatório técnico da falha. As tuas credenciais e os URLs das listas <b>nunca</b> são enviados. Retenção: 48 horas. Desliga-o quando quiseres nas definições. "+OK("podes desligar")+""},
+    {h:"Sincronização e «enviar para a TV» (opcional, Premium)", html:"Se vinculares os teus dispositivos com um código, os teus dados viajam <b>cifrados de ponta a ponta</b>: o servidor só guarda texto cifrado que <b>não consegue ler</b>, identificado por esse código. Sincroniza favoritos e histórico e envia um canal para a tua TV. Podes desvincular quando quiseres. "+WARN("opcional")+""},
+    {h:"Subscrição Premium", html:"O pagamento e a verificação da compra são feitos pelo <b>Google Play</b> diretamente no teu dispositivo: a Caudal não envia o comprovativo a nenhum servidor próprio e <b>não recebe os dados do teu cartão</b>. Podes cancelar a subscrição quando quiseres em Google Play › Subscrições."},
+    {h:"O que NÃO fazemos", html:"<ul><li>Sem anúncios de terceiros nem SDK de publicidade.</li><li>Sem analítica nem rastreadores de terceiros.</li><li>Não vendemos os teus dados nem criamos perfis publicitários.</li><li>Não acedemos aos teus contactos, localização, fotos ou microfone.</li></ul>"},
+    {h:"Permissões", html:"Caudal usa a <b>Internet</b> para reproduzir as tuas fontes e, no canal de instalação direta (fora do Google Play), para <b>instalar as próprias atualizações</b>. Não pede permissões sensíveis."},
+    {h:"Menores", html:"Caudal não se destina a menores."},
+    {h:"Os teus direitos e a eliminação (RGPD)", html:"Desinstalar a app elimina todos os dados locais. Para os dados do servidor: desvincular a sincronização repõe o teu grupo cifrado; o diagnóstico expira sozinho às 48 h; e podes escrever-nos para eliminar qualquer dado ligado ao teu identificador de instalação ou à tua compra: "+mail+"."},
+    {h:"Segurança", html:"O armazenamento local é cifrado. As ligações aos nossos servidores usam HTTPS. A app verifica a própria assinatura para detetar cópias manipuladas."},
+    {h:"Alterações", html:"Se alterarmos esta política, atualizaremos esta página e a sua data."},
+    {h:"Contacto", html:"Para qualquer questão de privacidade: "+mail+"."}
+  ],
+  footer:"Caudal — Leitor multimédia neutro. Esta página é informativa e não constitui aconselhamento jurídico. Caudal não fornece, aloja nem distribui canais ou conteúdos."
+},
+
+ru:{ name:"Русский", dir:"ltr",
+  title:"Политика конфиденциальности Caudal",
+  tag:"Просто плеер. С устройства уходит минимум.",
+  updated:"Последнее обновление: 30 сентября 2026",
+  langlabel:"Язык:",
+  summary:"<b>Кратко:</b> Caudal — медиаплеер. Ты добавляешь свои списки, а Caudal их воспроизводит. Твои списки и учётные данные хранятся <b>зашифрованными на устройстве</b>. Отправляются <b>анонимная статистика использования</b> и <b>техническая диагностика</b> сбоев (обе включены по умолчанию, их можно выключить в настройках); синхронизация — только если ТЫ её включишь. <b>Без рекламы и без сторонних трекеров</b>, без продажи данных.",
+  sections:[
+    {h:"Кто мы", html:"Caudal — независимо разработанный медиаплеер для Android и Android TV. Он не размещает и не предоставляет никаких каналов или контента: источники добавляешь ты. По вопросам конфиденциальности пиши на "+mail+"."},
+    {h:"Что остаётся на устройстве", html:"Твои списки (M3U/Xtream), учётные данные, избранное, история «продолжить просмотр», профили и настройки хранятся <b>зашифрованными на твоём устройстве</b>. Они не отправляются в Caudal, кроме необязательных случаев ниже. "+OK("локально")+""},
+    {h:"Анонимная статистика использования (ВКЛ, можно выключить)", html:"Чтобы понимать, пользуются ли приложением и что стоит улучшить, анонимно считается, сколько раз оно открывается, удалось ли подключить список, воспроизводил ли ты что-нибудь и какие функции используешь. Используется <b>случайный идентификатор установки</b> (не рекламный), величины передаются <b>диапазонами</b>, а не точными значениями, и есть <b>закрытый список</b> того, что можно отправить: названия каналов, URL и учётные данные в него не входят. Твой IP не сохраняется, отдельные события тоже, только сводные счётчики. Выключается в настройках в любой момент. "+OK("можно выключить")+""},
+    {h:"Диагностика воспроизведения (ВКЛ, можно выключить)", html:"Она включена по умолчанию, чтобы мы могли исправлять сбои, и приложение сообщает об этом при первом запуске. Отправляются технические сигналы: <b>анонимный идентификатор установки</b>, модель и версия устройства, версия приложения, события воспроизведения (обезличенное имя канала, состояние, обрывы и ошибки) и, если приложение аварийно закроется, технический отчёт о сбое. Твои учётные данные и URL списков <b>никогда</b> не отправляются. Хранение: 48 часов. Выключить её можно в любой момент в настройках. "+OK("можно выключить")+""},
+    {h:"Синхронизация и «отправить на ТВ» (необязательно, Premium)", html:"Если связать устройства кодом, данные передаются <b>со сквозным шифрованием</b>: сервер хранит только шифртекст, который <b>не может прочитать</b>, идентифицированный этим кодом. Синхронизирует избранное и историю и отправляет канал на ТВ. Отвязать можно в любой момент. "+WARN("необязательно")+""},
+    {h:"Подписка Premium", html:"Оплату и проверку покупки выполняет <b>Google Play</b> прямо на твоём устройстве: Caudal не отправляет чек ни на какой свой сервер и <b>не получает данные твоей карты</b>. Отменить подписку можно в любой момент в Google Play › Подписки."},
+    {h:"Чего мы НЕ делаем", html:"<ul><li>Нет сторонней рекламы и рекламных SDK.</li><li>Нет сторонней аналитики и трекеров.</li><li>Мы не продаём твои данные и не строим рекламные профили.</li><li>Мы не имеем доступа к контактам, геолокации, фото и микрофону.</li></ul>"},
+    {h:"Разрешения", html:"Caudal использует <b>Интернет</b> для воспроизведения источников и, в канале прямой установки (вне Google Play), для <b>установки собственных обновлений</b>. Чувствительных разрешений не запрашивает."},
+    {h:"Дети", html:"Caudal не предназначен для детей."},
+    {h:"Твои права и удаление данных (GDPR)", html:"Удаление приложения стирает все локальные данные. Для серверных данных: отвязка синхронизации сбрасывает твою зашифрованную группу; диагностика исчезает сама через 48 ч; и ты можешь написать нам для удаления любых данных, связанных с твоим идентификатором установки или покупкой: "+mail+"."},
+    {h:"Безопасность", html:"Локальное хранилище зашифровано. Соединения с нашими серверами используют HTTPS. Приложение проверяет собственную подпись для выявления изменённых копий."},
+    {h:"Изменения политики", html:"Если мы изменим эту политику, обновим эту страницу и её дату."},
+    {h:"Контакт", html:"По вопросам конфиденциальности: "+mail+"."}
+  ],
+  footer:"Caudal — нейтральный медиаплеер. Эта страница носит информационный характер и не является юридической консультацией. Caudal не предоставляет, не размещает и не распространяет каналы или контент."
+},
+
+zh:{ name:"中文", dir:"ltr",
+  title:"Caudal 隐私政策",
+  tag:"只是一个播放器，离开设备的数据极少。",
+  updated:"最后更新：2026 年 9 月 30 日",
+  langlabel:"语言：",
+  summary:"<b>简而言之：</b>Caudal 是一款媒体播放器。你提供列表，Caudal 负责播放。你的列表和账号凭据<b>加密保存在你的设备上</b>。会发送<b>匿名使用统计</b>和故障<b>技术诊断</b>（两者默认开启，均可在设置中关闭）；同步只有在你开启时才会使用。<b>无广告、无第三方追踪</b>，也不出售数据。",
+  sections:[
+    {h:"我们是谁", html:"Caudal 是一款独立开发的 Android 与 Android TV 媒体播放器。它不托管也不提供任何频道或内容：来源由你提供。隐私相关问题请联系 "+mail+"。"},
+    {h:"留在你设备上的内容", html:"你的列表（M3U/Xtream）、账号凭据、收藏、\"继续观看\"历史、多用户和设置都<b>加密保存在你自己的设备上</b>。除下述可选情形外，不会发送给 Caudal。"+OK("本地")+""},
+    {h:"匿名使用统计（默认开启，可关闭）", html:"为了了解应用是否真的被使用、以及值得改进什么，我们匿名统计诸如打开次数、你是否成功连接了列表、是否播放过内容以及使用了哪些功能。使用<b>随机安装标识</b>（不是广告标识），数量以<b>区间</b>而非精确值发送，并且有一份<b>封闭清单</b>规定可发送的内容：频道名、URL 和账号凭据都不在其中。不保存你的 IP，也不保存任何单条事件，只有汇总计数。可随时在设置中关闭。"+OK("可关闭")+""},
+    {h:"播放诊断（默认开启，可关闭）", html:"为帮助我们修复问题，诊断默认开启，应用会在开始使用时告知你。会发送技术信号：一个<b>匿名安装标识</b>、你的设备型号与版本、应用版本、播放事件（脱敏后的频道名、状态、中断与错误），以及应用意外关闭时的技术故障报告。<b>绝不</b>发送你的凭据或列表 URL。保留 48 小时。可随时在设置中关闭。"+OK("可关闭")+""},
+    {h:"同步与\"投送到电视\"（可选，会员）", html:"若用一个代码关联你的设备，数据以<b>端到端加密</b>传输：服务器只保存<b>无法读取</b>的密文，并以该代码标识。用于同步收藏与历史，并把频道投送到电视。你可随时取消关联。"+WARN("可选")+""},
+    {h:"Premium 订阅", html:"付款与购买验证由 <b>Google Play</b> 直接在你的设备上完成：Caudal 不会把收据发送到任何自有服务器，也<b>不会收到你的银行卡信息</b>。你可以随时在 Google Play › 订阅 中取消订阅。"},
+    {h:"我们不做的事", html:"<ul><li>没有第三方广告，没有广告 SDK。</li><li>没有第三方分析或追踪器。</li><li>不出售你的数据，不建立广告画像。</li><li>不访问你的联系人、位置、照片或麦克风。</li></ul>"},
+    {h:"权限", html:"Caudal 使用<b>互联网</b>播放你的来源，并在直装渠道（Google Play 之外）用于<b>安装自身更新</b>。不申请敏感权限。"},
+    {h:"儿童", html:"Caudal 不面向儿童。"},
+    {h:"你的权利与数据删除（GDPR）", html:"卸载应用会删除所有本地数据。服务器数据方面：取消同步关联会重置你的加密分组；诊断在 48 小时后自动过期；你也可以联系我们删除与你的安装标识或购买相关的任何数据："+mail+"。"},
+    {h:"安全", html:"本地存储已加密。与服务器的连接使用 HTTPS。应用会校验自身签名以发现被篡改的副本。"},
+    {h:"政策变更", html:"若我们修改本政策，将更新本页面及其日期。"},
+    {h:"联系", html:"任何隐私问题请联系："+mail+"。"}
+  ],
+  footer:"Caudal — 中立媒体播放器。本页仅供参考，不构成法律意见。Caudal 不提供、不托管、不分发任何频道或内容。"
+},
+
+ar:{ name:"العربية", dir:"rtl",
+  title:"سياسة خصوصية Caudal",
+  tag:"مجرّد مشغّل. أقل قدر من البيانات يغادر جهازك.",
+  updated:"آخر تحديث: 30 سبتمبر 2026",
+  langlabel:"اللغة:",
+  summary:"<b>باختصار:</b> Caudal مشغّل وسائط. أنت تضيف قوائمك وCaudal يشغّلها. تُحفظ قوائمك وبيانات اعتمادك <b>مشفّرة على جهازك</b>. تُرسَل <b>إحصاءات استخدام مجهولة</b> و<b>تشخيص تقني</b> للأعطال (كلاهما مفعّل افتراضيًا ويمكنك إيقافهما من الإعدادات)؛ أما المزامنة فلا تعمل إلا إذا فعّلتها أنت. <b>بدون إعلانات وبدون متتبّعات من طرف ثالث</b>، ودون بيع بيانات.",
+  sections:[
+    {h:"من نحن", html:"Caudal مشغّل وسائط مطوَّر بشكل مستقل لنظام Android وAndroid TV. لا يستضيف ولا يوفّر أي قنوات أو محتوى: أنت من يضيف المصادر. لأي استفسار عن الخصوصية راسلنا على "+mail+"."},
+    {h:"ما يبقى على جهازك", html:"قوائمك (M3U/Xtream) وبيانات اعتمادك ومفضّلاتك وسجلّ «متابعة المشاهدة» والملفات الشخصية والإعدادات تُحفظ <b>مشفّرة على جهازك</b>. لا تُرسَل إلى Caudal إلا في الحالات الاختيارية أدناه. "+OK("محلي")+""},
+    {h:"إحصاءات استخدام مجهولة (مُفعَّلة، ويمكنك إيقافها)", html:"لمعرفة ما إذا كان التطبيق يُستخدم فعلًا وما يستحق التحسين، نحصي بشكل مجهول أمورًا مثل عدد مرات الفتح، وهل نجحت في ربط قائمة، وهل شغّلت شيئًا، وأي الميزات تستخدم. يُستعمل <b>معرّف تثبيت عشوائي</b> (وليس معرّف الإعلانات)، وتُرسَل الكميات <b>ضمن نطاقات</b> لا بقيم دقيقة، وهناك <b>قائمة مغلقة</b> لما يمكن إرساله: لا مكان فيها لأسماء القنوات ولا الروابط ولا بيانات الاعتماد. لا يُحفَظ عنوان IP الخاص بك ولا أي حدث منفرد، بل عدّادات مجمّعة فقط. أوقفه متى شئت من الإعدادات. "+OK("يمكن إيقافه")+""},
+    {h:"تشخيص التشغيل (مُفعَّل، ويمكنك إيقافه)", html:"يكون مفعّلًا افتراضيًا لمساعدتنا على إصلاح الأعطال، ويُعلمك التطبيق بذلك عند البدء. تُرسَل إشارات تقنية: <b>معرّف تثبيت مجهول</b>، وطراز جهازك وإصداره، وإصدار التطبيق، وأحداث التشغيل (اسم قناة مُنقّى، الحالة، الانقطاعات والأخطاء)، وإذا أُغلق التطبيق فجأة، التقرير التقني للعطل. <b>لا تُرسَل أبدًا</b> بيانات اعتمادك ولا روابط قوائمك. مدة الحفظ: 48 ساعة. يمكنك إيقافه متى شئت من الإعدادات. "+OK("يمكن إيقافه")+""},
+    {h:"المزامنة و«الإرسال إلى التلفاز» (اختياري، مميّز)", html:"إذا ربطت أجهزتك برمز، تنتقل بياناتك <b>مشفّرة من طرف إلى طرف</b>: لا يخزّن خادمنا سوى نص مشفّر <b>لا يستطيع قراءته</b>، يُعرَّف بذلك الرمز. يُزامن المفضّلات والسجل ويُرسل قناة إلى تلفازك. يمكنك فك الارتباط متى شئت. "+WARN("اختياري")+""},
+    {h:"اشتراك Premium", html:"يتولّى <b>Google Play</b> الدفع والتحقق من الشراء مباشرةً على جهازك: لا يرسل Caudal الإيصال إلى أي خادم خاص به <b>ولا يستلم بيانات بطاقتك</b>. يمكنك إلغاء الاشتراك في أي وقت من Google Play › الاشتراكات."},
+    {h:"ما لا نفعله", html:"<ul><li>لا إعلانات من أطراف ثالثة ولا حزم إعلانات.</li><li>لا تحليلات ولا متتبّعات من أطراف ثالثة.</li><li>لا نبيع بياناتك ولا ننشئ ملفات إعلانية.</li><li>لا نصل إلى جهات اتصالك أو موقعك أو صورك أو الميكروفون.</li></ul>"},
+    {h:"الأذونات", html:"يستخدم Caudal <b>الإنترنت</b> لتشغيل مصادرك، وفي قناة التثبيت المباشر (خارج Google Play) <b>لتثبيت تحديثاته الخاصة</b>. لا يطلب أذونات حسّاسة."},
+    {h:"القُصَّر", html:"Caudal غير موجَّه للقُصَّر."},
+    {h:"حقوقك وحذف البيانات (GDPR)", html:"إلغاء تثبيت التطبيق يحذف كل البيانات المحلية. أما بيانات الخادم: فكّ ارتباط المزامنة يعيد ضبط مجموعتك المشفّرة؛ والتشخيص ينتهي تلقائيًا بعد 48 ساعة؛ ويمكنك مراسلتنا لحذف أي بيانات مرتبطة بمعرّف التثبيت أو بعملية الشراء: "+mail+"."},
+    {h:"الأمان", html:"التخزين المحلي مشفّر. الاتصالات بخوادمنا تستخدم HTTPS. يتحقق التطبيق من توقيعه الخاص لاكتشاف النسخ المتلاعَب بها."},
+    {h:"تغييرات هذه السياسة", html:"إذا عدّلنا هذه السياسة، سنحدّث هذه الصفحة وتاريخها."},
+    {h:"التواصل", html:"لأي سؤال عن الخصوصية: "+mail+"."}
+  ],
+  footer:"Caudal — مشغّل وسائط محايد. هذه الصفحة للعلم فقط ولا تُعدّ استشارة قانونية. لا يوفّر Caudal ولا يستضيف ولا يوزّع أي قنوات أو محتوى."
+}
+};
+
+const ORDER = ["es","en","fr","pt","ru","zh","ar"];
+
+function render(lang){
+  const d = T[lang] || T.es;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = d.dir || "ltr";
+  document.getElementById("t-title").textContent = d.title;
+  document.getElementById("t-tag").textContent = d.tag;
+  document.getElementById("t-langlabel").textContent = d.langlabel;
+  document.getElementById("t-updated").innerHTML = "<em>"+d.updated+"</em>";
+  document.getElementById("t-summary").innerHTML = d.summary;
+  document.getElementById("content").innerHTML = d.sections.map(function(s,i){
+    return '<section class="card"><h2><span class="n">'+(i+1)+'.</span>'+s.h+'</h2>'+s.html+'</section>';
+  }).join("");
+  document.getElementById("t-footer").innerHTML = d.footer;
+  document.title = d.title;
+  Array.prototype.forEach.call(document.querySelectorAll(".lang"), function(b){
+    b.setAttribute("aria-pressed", b.dataset.l === lang ? "true":"false");
+  });
+  try{ history.replaceState(null,"","#"+lang); }catch(e){}
+}
+(function init(){
+  document.getElementById("langbtns").innerHTML = ORDER.map(function(l){
+    return '<button class="lang" data-l="'+l+'" type="button">'+T[l].name+'</button>';
+  }).join(" ");
+  Array.prototype.forEach.call(document.querySelectorAll(".lang"), function(b){
+    b.addEventListener("click", function(){ render(b.dataset.l); });
+  });
+  const hash = (location.hash||"").replace("#","");
+  const nav = (navigator.language||"es").slice(0,2).toLowerCase();
+  render(T[hash] ? hash : (T[nav] ? nav : "es"));
+})();
+</script>
+</body>
+</html>
